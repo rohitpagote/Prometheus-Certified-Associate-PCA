@@ -98,7 +98,7 @@
 ---
 
 > [!NOTE]
-
+> CONCLUSION
 > - Prometheus is engineered for the efficient collection, storage, and querying of time series metrics. 
 > - Its modular architecture—including key components like exporters, service discovery, and Alertmanager—ensures it can meet the monitoring requirements of both static and dynamic environments. 
 > - By leveraging a pull-based model and providing push-based alternatives via Pushgateway, Prometheus offers a comprehensive monitoring solution for a wide variety of use cases.
