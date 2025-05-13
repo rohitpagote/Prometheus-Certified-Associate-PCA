@@ -6,6 +6,7 @@ sudo apt update -y
 
 ## Step 2: Download Prometheus package
 - Go to official Prometheus [downloads page](https://prometheus.io/download/), and copy the URL of Linux "tar" file.
+
 ![Prometheus Download Page](images/prometheus-download-page.png)
 
 - Run the following command to download package. Paste the copied URL after wget in the below command:
@@ -18,7 +19,7 @@ wget https://github.com/prometheus/prometheus/releases/download/v3.4.0-rc.0/prom
 ```bash
 useradd --no-create-home --shell /bin/false prometheus
 ```
-As we do not need `prometheus` user to login and have home directory
+- As we do not need `prometheus` user to login and have home directory.
 
 2. Create needed directories.
 ```bash
@@ -129,5 +130,6 @@ systemctl enable prometheus
 ```bash
 http://<server-IP>:9090/graph     # replace server-IP with the IP of you host (localhost) or VM
 ```
-You will see the following interface.
+- You will see the following interface.
+
 ![prometheus-ui](images/prometheus-ui.png)
