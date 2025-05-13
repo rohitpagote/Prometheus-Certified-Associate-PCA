@@ -34,5 +34,5 @@
 
 ---
 
-[!NOTE]
-In summary, SLIs are used to measure the quality of a service, SLOs set the target performance levels for these indicators, and SLAs formalize these targets in a binding agreement. Together, they play a critical role in ensuring that customers receive a consistent and high-quality service.
+> [!NOTE]
+> In summary, SLIs are used to measure the quality of a service, SLOs set the target performance levels for these indicators, and SLAs formalize these targets in a binding agreement. Together, they play a critical role in ensuring that customers receive a consistent and high-quality service.

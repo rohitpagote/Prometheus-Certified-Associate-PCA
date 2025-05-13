@@ -55,5 +55,5 @@ node_filesystem_avail_bytes{fstype="vfat", mountpoint="/home"} 5000 4:30AM 12/1/
 <name>                      <dimensions>                       <value> <timestamp>
 ```
 
-[!NOTE] 
-Prometheus is a monitoring solution that is responsible for collecting and aggregating metrics
+> [!NOTE] 
+> Prometheus is a monitoring solution that is responsible for collecting and aggregating metrics
