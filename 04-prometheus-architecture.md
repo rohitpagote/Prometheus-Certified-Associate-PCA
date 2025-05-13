@@ -87,12 +87,13 @@
 - Reduced risk of server overload by controlling the rate of metric collection.
 - Have a definite list of targets to monitor, creating a central source of truth.
 
-- Although the pull-based model is effective for numeric metrics, it may not be ideal for event-based data or short-lived jobs.
-- In such cases, the Pushgateway allows these jobs to push their metrics for subsequent scraping by Prometheus.
-
 ## Advantages of Push-Based Model
 - Event-based systems, when pulling data wouldn’t be a viable option
 - Short lived jobs, as they may end before a pull can occur
+
+> [!NOTE]
+> - Although the pull-based model is effective for numeric metrics, it may not be ideal for event-based data or short-lived jobs.
+> - In such cases, the Pushgateway allows these jobs to push their metrics for subsequent scraping by Prometheus.
 
 ---
 
