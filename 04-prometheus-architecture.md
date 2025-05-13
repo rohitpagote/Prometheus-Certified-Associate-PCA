@@ -32,6 +32,12 @@
 - However, for short-lived jobs that might not exist long enough to be scraped, the Pushgateway is used.
 - **Pushgateway temporarily stores metrics pushed by the jobs until Prometheus can scraps them.**
 
+## Targets
+- Targets (machines/application) to scrape are usually specified in a static configuration file. 
+- In dynamic environments, such as Kubernetes or cloud infrastructures, **service discovery** mechanisms automatically update the target list.
+
+---
+
 # Alerting
 - Prometheus supports alreting by evaluating collected metrics against defined thresholds.
 - While it does not send notifications directly, it forwards alerts to Alertmanager.
