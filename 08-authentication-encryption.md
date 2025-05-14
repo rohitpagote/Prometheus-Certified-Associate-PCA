@@ -18,7 +18,7 @@ To enable secure TLS communications, first generate a certificate.
 The example below uses OpenSSL to create a self-signed certificate valid for one year. (You can also use a certificate from providers like Let's Encrypt, VeriSign, or another Certificate Authority based on your organization's requirements.)
 
 ```bash
-sudo openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 \
+$ sudo openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 \
   -keyout node_exporter.key -out node_exporter.crt \
   -subj "/C=US/ST=California/L=Oakland/O=MyOrg/CN=localhost" \
   -addext "subjectAltName = DNS:localhost"
@@ -30,7 +30,7 @@ After running the command, you should see the following files:
 
 You can verify the files by listing the directory contents:
 ```bash
-ls -l
+$ ls -l
 -rw-r--r-- 1 user2 user2 11357 Dec  5  2021 LICENSE
 -rwxr-xr-x 1 user2 user2 18228926 Dec  5  2021 node_exporter
 -rw-r--r-- 1 root  root  1326 Sep  5 18:04 node_exporter.crt
@@ -40,9 +40,9 @@ ls -l
 ---
 
 # 2. Configuring Node Exporter with TLS
-Next, create a `config.yml` file for the Node Exporter that includes TLS settings. (similar to Prometheus's configuration)
+Next, create a `config.yml` file for the Node Exporter that includes TLS settings. (similar to Prometheus's configuration - `prometheus.yml`)
 ```bash
-vi config.yml
+$ vi config.yml
 ```
 
 ```yaml
@@ -54,7 +54,7 @@ tls_server_config:
 
 Then, start the Node Exporter process:
 ```bash
-./node_exporter --web.config=config.yml
+$ ./node_exporter --web.config=config.yml
 ```
 
 You should see output confirming that TLS is enabled:
@@ -70,17 +70,17 @@ ts=2022-09-05T22:26:53.966Z caller=tls_config.go:228 level=info msg="TLS is enab
 ---
 
 # 3. Organizing Configuration Files
-It is a best practice to store configuration files within the /etc directory. Follow these steps:
-- Create a folder for Node Exporter configurations under /etc.
-- Move the certificate and key files to this folder.
+It is a best practice to store configuration files within the `/etc` directory. Follow these steps:
+- Create a folder for Node Exporter configurations under `/etc`.
+- Move the certificate and key files to this folder - `node_exporter.crt` & `node_exporter.key`.
 - Copy the configuration file to the same folder.
 - Update folder permissions to allow the Node Exporter user to access these files.
 
 ```bash
-sudo mkdir /etc/node_exporter
-mv node_exporter.* /etc/node_exporter
-sudo cp config.yml /etc/node_exporter
-sudo chown -R node_exporter:node_exporter /etc/node_exporter
+$ sudo mkdir /etc/node_exporter
+$ mv node_exporter.* /etc/node_exporter
+$ sudo cp config.yml /etc/node_exporter
+$ sudo chown -R node_exporter:node_exporter /etc/node_exporter
 ```
 
 ---
@@ -89,7 +89,7 @@ sudo chown -R node_exporter:node_exporter /etc/node_exporter
 To use the new configuration file, update the Node Exporter systemd service:
 1. Open and edit the service file:
 ```bash
-vi /etc/systemd/system/node_exporter.service
+$ vi /etc/systemd/system/node_exporter.service
 ```
 
 2. Example of a systemd configuration for Node Exporter:
@@ -111,20 +111,20 @@ WantedBy=multi-user.target
 
 3. Reload the systemd daemon and restart Node Exporter:
 ```bash
-systemctl daemon-reload
-systemctl restart node_exporter
+$ systemctl daemon-reload
+$ systemctl restart node_exporter
 ```
 
 When using self-signed certificates, testing with tools like curl will require an insecure flag, as seen below:
 ```bash
-curl https://localhost:9100/metrics
+$ curl https://localhost:9100/metrics
 curl: (60) SSL certificate problem: self-signed certificate
 More details here: https://curl.se/docs/sslcerts.html
 ```
 
 For testing, bypass verification using the -k flag:
 ```bash
-curl -k https://localhost:9100/metrics
+$ curl -k https://localhost:9100/metrics
 # HELP promhttp_metric_handler_requests_total Total number of scrapes by HTTP status code.
 # TYPE promhttp_metric_handler_requests_total counter
 promhttp_metric_handler_requests_total{code="200"} 10217
@@ -138,13 +138,13 @@ promhttp_metric_handler_requests_total{code="503"} 0
 With Node Exporter now requiring HTTPS, update the Prometheus configuration accordingly:
 1. Copy the Node Exporter certificate to the Prometheus server using SCP:
 ```bash
-scp username:password@node:/etc/node_exporter/node_exporter.crt /etc/prometheus
-sudo chown prometheus:prometheus /etc/prometheus/node_exporter.crt
+$ scp username:password@node:/etc/node_exporter/node_exporter.crt /etc/prometheus
+$ sudo chown prometheus:prometheus /etc/prometheus/node_exporter.crt
 ```
 
 2. Open the Prometheus configuration file for editing:
 ```bash
-vi /etc/prometheus/prometheus.yml
+$ vi /etc/prometheus/prometheus.yml
 ```
 
 3. Modify the configuration with these changes:
@@ -164,7 +164,7 @@ scrape_configs:
 
 4. Restart Prometheus:
 ```bash
-sudo systemctl restart prometheus
+$ sudo systemctl restart prometheus
 ```
 
 ---
@@ -192,7 +192,7 @@ basic_auth_users:
 
 3. Restart Node Exporter:
 ```bash
-sudo systemctl restart node_exporter
+$ sudo systemctl restart node_exporter
 ```
 
 At this point, if you check the Prometheus targets page, you might see one target down because of an HTTP 401 Unauthorized error. This happens because Prometheus is not yet configured to authenticate with the target.
@@ -202,7 +202,7 @@ At this point, if you check the Prometheus targets page, you might see one targe
 To resolve this issue, update the Prometheus configuration to include basic authentication:
 1. Edit the Prometheus configuration file:
 ```bash
-vi /etc/prometheus/prometheus.yml
+$ vi /etc/prometheus/prometheus.yml
 ```
 
 2. Add the basic_auth configuration with the username and plain text password (the same one used to generate the hash):
@@ -222,7 +222,7 @@ scrape_configs:
 
 3. Restart Prometheus:
 ```bash
-sudo systemctl restart prometheus
+$ sudo systemctl restart prometheus
 ```
 
 After these changes, the Prometheus targets page should show the target as active (up), confirming that both TLS and basic authentication are properly configured.
