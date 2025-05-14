@@ -4,14 +4,24 @@
 sudo apt update -y
 ```
 
-## Step 2: Download Prometheus package
-- Go to official Prometheus [downloads page](https://prometheus.io/download/), and copy the URL of Linux "tar" file.
+## Step 2: Download and untar Prometheus package
+1. Go to official Prometheus [downloads page](https://prometheus.io/download/), and copy the URL of Linux "tar" file.
 
 ![Prometheus Download Page](images/prometheus-download-page.png)
 
-- Run the following command to download package. Paste the copied URL after wget in the below command:
+2. Run the following command to download package. Paste the copied URL after wget in the below command:
 ```bash
 wget https://github.com/prometheus/prometheus/releases/download/v3.4.0-rc.0/prometheus-3.4.0-rc.0.linux-amd64.tar.gz
+```
+
+3. Now go to Prometheus downloaded location and extract it using `tar` command.
+```bash
+tar -xvf prometheus-3.4.0-rc.0.linux-amd64.tar.gz
+```
+
+4. Rename it as per your preference (optional).
+```bash
+mv prometheus-3.4.0-rc.0.linux-amd64 prometheus-package
 ```
 
 ## Step 3: Configure Prometheus
@@ -33,47 +43,38 @@ chown prometheus:prometheus /etc/prometheus
 chown prometheus:prometheus /var/lib/prometheus
 ```
 
-4. Now go to Prometheus downloaded location and extract it using `tar` command.
-```bash
-tar -xvf prometheus-3.4.0-rc.0.linux-amd64.tar.gz
-```
-
-5. Rename it as per your preference (optional).
-```bash
-mv prometheus-3.4.0-rc.0.linux-amd64 prometheus-package
-```
-
-6. Copy `prometheus` and `promtool` binary from the `prometheus-package` folder to `/usr/local/bin`.
+4. Copy `prometheus` and `promtool` binary from the `prometheus-package` folder to `/usr/local/bin`.
 ```bash
 cp  prometheus-package/prometheus /usr/local/bin
 cp prometheus-package/promtool /usr/local/bin
 ```
 
-7. Change the ownership to `prometheus` user.
+5. Change the ownership to `prometheus` user.
 ```bash
 chown prometheus:prometheus usr/local/bin/prometheus
 chown prometheus:prometheus usr/local/bin/promtool
 ```
 
-*Below sub-steps (8 and 9) are optional, follow only if the `prometheus-package` contains `console` and `console-libraries` directories*
-8. Copy `consoles` and `console_libraries` directories from the `prometheuspackage` to `/etc/prometheus folder`
+*Below sub-steps (6 and 7) are optional, follow only if the `prometheus-package` contains `console` and `console-libraries` directories.*
+
+6. Copy `consoles` and `console_libraries` directories from the `prometheuspackage` to `/etc/prometheus folder`
 ```bash
 cp -r prometheus-package/console /etc/prometheus
 cp -r prometheus-package/console-libraries /etc/prometheus
 ```
 
-9. Change the ownership to `prometheus` user
+7. Change the ownership to `prometheus` user
 ```bash
 chown -R prometheus:prometheus /etc/prometheus/consoles
 chown -R prometheus:prometheus /etc/prometheus/console_libraries
 ```
 
-10. Copy `prometheus.yml` file from the `prometheus-package` folder to `/etc/prometheus/`.
+8. Copy `prometheus.yml` file from the `prometheus-package` folder to `/etc/prometheus/`.
 ```bash
 cp prometheus-package/prometheus.yml /etc/prometheus/
 ```
 
-11. Change the ownership of the file.
+9. Change the ownership of the file.
 ```bash
 chown prometheus:prometheus /etc/prometheus/prometheus.yml
 ```
@@ -84,7 +85,7 @@ chown prometheus:prometheus /etc/prometheus/prometheus.yml
 vi /etc/systemd/system/prometheus.service
 ```
 
-2. Copy the following content to the file.
+2. Add the following content to the file.
 ```bash
 [Unit]
 Description=Prometheus
@@ -126,9 +127,9 @@ systemctl enable prometheus
 ```
 
 ## Step 5: Access Prometheus Web Interface
-- Use the following Url to access Prometheus UI.
+- Use the following URL to access Prometheus UI.
 ```bash
-http://<server-IP>:9090/graph     # replace server-IP with the IP of you host (localhost) or VM
+http://<prometheus-server-IP>:9090/graph     # replace prometheus-server-IP with the IP of you host (localhost) or VM
 ```
 - You will see the following interface.
 
