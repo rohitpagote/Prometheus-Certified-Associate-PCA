@@ -59,7 +59,7 @@ chown prometheus:prometheus usr/local/bin/promtool
 
 6. Copy `consoles` and `console_libraries` directories from the `prometheuspackage` to `/etc/prometheus folder`
 ```bash
-cp -r prometheus-package/console /etc/prometheus
+cp -r prometheus-package/consoles /etc/prometheus
 cp -r prometheus-package/console-libraries /etc/prometheus
 ```
 
