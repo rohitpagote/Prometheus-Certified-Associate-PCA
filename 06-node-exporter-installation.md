@@ -90,7 +90,8 @@ http://IP-Address:9100/metrics     # replace IP-Address with the IP of you host 
 
 ---
 
-*Follow below steps to configure/register Node Exporter target (machine) on Prometheus server.*
+> [!NOTE]
+> *Follow below steps to configure/register Node Exporter target (machine) on Prometheus server.*
 
 ## Step 5: Configure Node Exporter target on Prometheus server
 1. Login to Prometheus server and modify the `prometheus.yml` file.
