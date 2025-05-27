@@ -2,7 +2,7 @@
 ## Step 1: Copy URL of the Node Exporter.
 1. Go to official Prometheus [downloads page](https://prometheus.io/download/). Copy URL of the [node_exporter](https://prometheus.io/download/#node_exporter) for Linux "tar" file.
 
-![Node Exporter Download Page](images/node_exporter_download_page.png)
+![Node Exporter Download Page](../images/node_exporter_download_page.png)
 
 2. Run the following command to download package. Paste the copied URL after wget in the below command:
 ```bash
@@ -86,7 +86,7 @@ http://IP-Address:9100/metrics     # replace IP-Address with the IP of you host 
 ```
 - You will see the following interface.
 
-![Node Exporter Metrics](images/node_exporter_metrics.png)
+![Node Exporter Metrics](../images/node_exporter_metrics.png)
 
 ---
 
