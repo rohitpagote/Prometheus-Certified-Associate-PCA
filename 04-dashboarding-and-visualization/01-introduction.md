@@ -9,6 +9,8 @@ Another powerful built-in feature is **Console Templates**. These allows to craf
 For those requiring even more advanced visualization capabilities, third-party tools like **Grafana** are highly recommended. Exclusively designed for robust data visualization, Dashboards, etc., Grafana provides extensive support for Prometheus data, along with deep customization possibilities.
 
 ## Summary
+There are several different ways to visualize Prometheus metric data
+
 Tools built into Prometheus:
 - Expression Browser
 - Console Templates
