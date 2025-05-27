@@ -7,7 +7,7 @@ sudo apt update -y
 ## Step 2: Download and untar Prometheus package
 1. Go to official Prometheus [downloads page](https://prometheus.io/download/), and copy the URL of Linux "tar" file.
 
-![Prometheus Download Page](images/prometheus-download-page.png)
+![Prometheus Download Page](../images/prometheus-download-page.png)
 
 2. Run the following command to download package. Paste the copied URL after wget in the below command:
 ```bash
@@ -133,4 +133,4 @@ http://<prometheus-server-IP>:9090/graph     # replace prometheus-server-IP with
 ```
 - You will see the following interface.
 
-![prometheus-ui](images/prometheus-ui.png)
+![prometheus-ui](../images/prometheus-ui.png)
