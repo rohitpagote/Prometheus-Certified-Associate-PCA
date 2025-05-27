@@ -168,7 +168,7 @@ sudo systemctl restart prometheus
 - Here you can inspect all configured targets and their scrape status. 
 - Both the Prometheus target and the new node target should display an "UP" status for successful metric collection.
 
-![Verify Prometheus Configuration-1](images/verify-prometheus-configuration-1.png)
+![Verify Prometheus Configuration-1](../images/verify-prometheus-configuration-1.png)
 
 - You can further verify the configuration by executing queries such as:
 ```ini
@@ -176,6 +176,6 @@ up{instance="192.168.1.100",job="node"}
 up{instance="localhost:9090",job="prometheus"}
 ```
 
-![Verify Prometheus Configuration-2](images/verify-prometheus-configuration-2.png)
+![Verify Prometheus Configuration-2](../images/verify-prometheus-configuration-2.png)
 
 - A returned value of 1 confirms that the instances are active and functional.
