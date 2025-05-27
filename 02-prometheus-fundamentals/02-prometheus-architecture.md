@@ -53,12 +53,12 @@
 - PromQL enables the users to interact with the data via either the Prometheus web UI or third-party visualization tools such as Grafana.
 - By default, Prometheus scrapes metrics from the <code>/metrics</code> endpoint of each target, though this endpoint can be customized in the configuration if needed.
 
-![Collecting Metrics](images/collecting-metrics.png)
+![Collecting Metrics](../images/collecting-metrics.png)
 
 ## Exporters
 - Many systems do not expose metrics in the required format; exporters bridge this gap by collecting metrics from applications, converting them into a compatible format, and exposing them on the <code>/metrics</code> endpoint for Prometheus to scrape.
 
-![Exporters](images/exporters.png)
+![Exporters](../images/exporters.png)
 
 - Prometheus offers a range of native exporters: 
     - Node Exporter for Linux systems
