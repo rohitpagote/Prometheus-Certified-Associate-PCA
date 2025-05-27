@@ -43,7 +43,7 @@
 - While it does not send notifications directly, it forwards alerts to Alertmanager.
 - Alertmanager then manages and dispatches notifications through various channels like Email, SMS, Slack, etc.
 
-![Prometheus Architecture](images/prometheus-architecture.png)
+![Prometheus Architecture](../images/prometheus-architecture.png)
 
 ---
 
