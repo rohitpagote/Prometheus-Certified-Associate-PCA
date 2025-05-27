@@ -7,7 +7,7 @@ Below are two primary challenges:
 
 Encrypting traffic with TLS ensures that even if someone sniffs the network, they will only see encrypted data. 
 
-![Authentication-Encryption](images/authentication-encryption.png)
+![Authentication-Encryption](../images/authentication-encryption.png)
 
 Below are the steps to set up authentication and encryption.
 
