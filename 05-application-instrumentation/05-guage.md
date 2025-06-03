@@ -3,7 +3,7 @@ In this, we will demonstrate how to create a gauge metric that monitors the tota
 
 - A gauge metric is similar to a counter; however, it provides additional flexibility by supporting both increment and decrement operations, as well as allowing to set a specific value when needed.
 
-> ![NOTE]
+> [!NOTE]
 > A gauge is especially useful for tracking values that can go up and down, such as the number of in-progress requests on your server.
 
 ## Gauge Metric Implementation
