@@ -10,7 +10,7 @@ The structure for naming metrics should be:
 4. Use unprefixed base units (like `seconds`, `bytes`, `meters`) rather than their prefixed counterparts (such as `microseconds` or `kilobytes`).
 5. Avoid applying special suffixes like `_total`, `_count`, `_sum`, and `_bucket` to custom names except that counter metrics should end with `_total`. Other metric types, including histograms, should not use these suffixes unless required.
 
-> [!INFO]
+> [!TIP]
 > library_name_unit_suffix
 
 The standard naming format includes the library name, a description, a unit, and, where applicable, an appropriate suffix.
