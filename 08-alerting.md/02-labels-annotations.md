@@ -29,9 +29,9 @@ groups:
 - Annotations use the Go templating language, enabling dynamic insertion of alert-related information.
 
 - For instance, you can access alert labels within an annotation using the following syntax:
-    - Use {{ .labels }} to retrieve all labels.
-    - Use {{ .labels.instance }} to get the value of the instance label.
-    - Use {{ .value }} to display the metric value at the time of the alert.
+    - Use `{{ .labels }}` to retrieve all labels.
+    - Use `{{ .labels.instance }}` to get the value of the instance label.
+    - Use `{{ .value }}` to display the metric value at the time of the alert.
 
 - Consider an annotation named "description" that assembles information about the file system, device label, instance name, and current metric value. 
 - When triggered, the annotation might state: "file system /dev/sda3 on [target instance] is low on space. Current available space is 20.40345."
