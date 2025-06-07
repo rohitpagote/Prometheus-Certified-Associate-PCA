@@ -7,7 +7,7 @@
 
 # Installation - Pushgateway
 ## Step 1: Download and Extract the Binary
-1. Go to official Prometheus [downloads page](https://prometheus.io/download/). Copy URL of the [node_exporter](https://prometheus.io/download/#pushgateway) for Linux "tar" file.
+1. Go to official Prometheus [downloads page](https://prometheus.io/download/). Copy URL of the [pushgateway](https://prometheus.io/download/#pushgateway) for Linux "tar" file.
 
 ![Pushgateway Download Page](../images/pushgateway_download_page.png)
 
@@ -29,14 +29,13 @@ mv pushgateway-1.11.1.linux-amd64.tar.gz pushgateway
 ---
 
 ## Step 2: Configure Systemd for Push Gateway
-1. Create a user for the node exporter.
+1. Create a user for the pushgateway.
 ```bash
 useradd --no-create-home --shell /bin/false pushgateway
 ```
 - As we do not need `pushgateway` user to login and have home directory.
 
-2. Move binary to “/usr/local/bin” from the downloaded extracted package.
-Copy `pushgateway` binary from the `pushgateway` folder to `/usr/local/bin`.
+2. Copy `pushgateway` binary from the `pushgateway` folder to `/usr/local/bin`.
 ```bash
 cp  pushgateway/pushgateway /usr/local/bin
 ```
